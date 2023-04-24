@@ -1,5 +1,5 @@
 import { StyleSheet, View } from 'react-native';
-import DevideInfo from './screens/DeviceInfo';
+import DeviceInfo from './screens/DeviceInfo.jsx';
 
 const styles = StyleSheet.create({
   container: {
