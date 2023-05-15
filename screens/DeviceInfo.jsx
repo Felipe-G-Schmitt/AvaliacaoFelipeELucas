@@ -1,72 +1,86 @@
-import { Text, View } from "react-native";
-import * as Device from 'expo-device';
-import { Button } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
+import * as Device from "expo-device";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        gap: 10
+    },
+    content: {
+        flex: 1,
+        gap: 20,
+        padding: 20,
+        alignSelf: 'center',
+    },
+    contentTextStyle: {
+        padding: 5,
+        textAlignVertical: 'center',
+        minHeight: 50,
+        backgroundColor: '#969',
+        color: 'white',
+        fontWeight: 'bold',
+        fontSize: 18,
+        textAlign: 'center'
+    },
+});
 
 export default function DeviceInfo() {
-    return (
-        <View>
-            <View style={{ backgroundColor: "#B8F5C1", borderWidth: 5, borderColor: "#9BDEB8", marginBottom: 10, borderRadius: 10, }}>
-                <Text style={{ fontWeight: 'bold', textAlign: 'center', fontSize: 25,}}>Informações do Aparelho</Text>
-            </View>
+  return (
+    <View style={styles.container}>
+        <Header
+            title="Informações do Aparelho"
+        />
 
-            <View style={{ backgroundColor: "#B8F5C1", borderWidth: 5, borderColor: "#9BDEB8", marginTop: 5, marginBottom: 5, borderRadius: 5,}}>
-                <Text>O nome do seu aparelho é:
-                    {Device.modelName}
-                </Text>
-            </View>
-            
-            <View style={{ backgroundColor: "#B8F5C1", borderWidth: 5, borderColor: "#9BDEB8", marginTop: 5, marginBottom: 5, borderRadius: 5,}}>
-            <Text>A marca do aparelho é:
-                {Device.brand}
-            </Text>
-            </View>
+      <View>
+        <Text>
+          O nome do seu aparelho é:
+          {Device.modelName}
+        </Text>
 
-            <View style={{ backgroundColor: "#B8F5C1", borderWidth: 5, borderColor: "#9BDEB8", marginTop: 5, marginBottom: 5, borderRadius: 5,}}>
-            <Text>O modelo do aparelho é:
-                {Device.modelName}
-            </Text>
-            </View>
+        <Text>
+          A marca do aparelho é:
+          {Device.brand}
+        </Text>
 
-            <View style={{ backgroundColor: "#B8F5C1", borderWidth: 5, borderColor: "#9BDEB8", marginTop: 5, marginBottom: 5, borderRadius: 5,}}>
-            <Text>O nome completo do aparelho é:
-                {Device.deviceName}
-            </Text>
-            </View>
+        <Text>
+          O modelo do aparelho é:
+          {Device.modelName}
+        </Text>
 
-            <View style={{ backgroundColor: "#B8F5C1", borderWidth: 5, borderColor: "#9BDEB8", marginTop: 5, marginBottom: 5, borderRadius: 5,}}>
-            <Text>O Design do aparelho é:
-                {Device.designName}
-            </Text>
-            </View>
+        <Text>
+          O nome completo do aparelho é:
+          {Device.deviceName}
+        </Text>
 
-            <View style={{ backgroundColor: "#B8F5C1", borderWidth: 5, borderColor: "#9BDEB8", marginTop: 5, marginBottom: 5, borderRadius: 5,}}>
-            <Text>O Ano do lançamento é:
-                {Device.deviceYearClass}
-            </Text>
-            </View>
+        <Text>
+          O Design do aparelho é:
+          {Device.designName}
+        </Text>
 
-            <View style={{ backgroundColor: "#B8F5C1", borderWidth: 5, borderColor: "#9BDEB8", marginTop: 5, marginBottom: 5, borderRadius: 5,}}>
-            <Text>A memória do aparelho é:
-                {Device.totalMemory}
-            </Text>
-            </View>
+        <Text>
+          O Ano do lançamento é:
+          {Device.deviceYearClass}
+        </Text>
 
-            <View style={{ backgroundColor: "#B8F5C1", borderWidth: 5, borderColor: "#9BDEB8", marginTop: 5, marginBottom: 5, borderRadius: 5,}}>
-            <Text>
-                A versão do sistema é a:
-                {Device.osBuildId}
-            </Text>
-            </View>
+        <Text>
+          A memória do aparelho é:
+          {Device.totalMemory}
+        </Text>
 
-            <View style={{ backgroundColor: "#B8F5C1", borderWidth: 5, borderColor: "#9BDEB8", marginTop: 5, marginBottom: 5, borderRadius: 5,}}>
-            <Text>A arquitetura do aparelho é:
-                {Device.osInternalBuildId}
-            </Text>
-            </View>
+        <Text>
+          A versão do sistema é a:
+          {Device.osBuildId}
+        </Text>
 
-            <View style={{ marginTop: 30}}>
-                <Button title="Sair" color="#2E4237" mode="contained"/>
-            </View>
-        </View>
-    )
+        <Text>
+          A arquitetura do aparelho é:
+          {Device.osInternalBuildId}
+        </Text>
+
+        <Footer/>
+      </View>
+    </View>
+  );
 }
