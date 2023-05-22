@@ -1,86 +1,84 @@
 import { StyleSheet, Text, View } from "react-native";
 import * as Device from "expo-device";
 import Header from "../components/Header";
-import Footer from "../components/Footer";
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        gap: 10
-    },
-    content: {
-        flex: 1,
-        gap: 20,
-        padding: 20,
-        alignSelf: 'center',
-    },
-    contentTextStyle: {
-        padding: 5,
-        textAlignVertical: 'center',
-        minHeight: 50,
-        backgroundColor: '#969',
-        color: 'white',
-        fontWeight: 'bold',
-        fontSize: 18,
-        textAlign: 'center'
-    },
-});
-
-export default function DeviceInfo() {
+export default function DeviceInfo({ navigation }) {
   return (
     <View style={styles.container}>
-        <Header
-            title="Informações do Aparelho"
-        />
+      <Header title="Informações do Aparelho" />
 
       <View>
-        <Text>
-          O nome do seu aparelho é:
-          {Device.modelName}
-        </Text>
+        <View style={{ margin: 5, backgroundColor: "#B379FD" }}>
+          <Text>
+            O nome do seu aparelho é:
+            {Device.modelName}
+          </Text>
+        </View>
 
-        <Text>
-          A marca do aparelho é:
-          {Device.brand}
-        </Text>
+        <View style={{ margin: 5, backgroundColor: "#B379FD" }}>
+          <Text>
+            A marca do aparelho é:
+            {Device.brand}
+          </Text>
+        </View>
 
-        <Text>
-          O modelo do aparelho é:
-          {Device.modelName}
-        </Text>
+        <View style={{ margin: 5, backgroundColor: "#B379FD" }}>
+          <Text>
+            O modelo do aparelho é:
+            {Device.modelName}
+          </Text>
+        </View>
 
-        <Text>
-          O nome completo do aparelho é:
-          {Device.deviceName}
-        </Text>
+        <View style={{ margin: 5, backgroundColor: "#B379FD" }}>
+          <Text>
+            O nome completo do aparelho é:
+            {Device.deviceName}
+          </Text>
+        </View>
 
-        <Text>
-          O Design do aparelho é:
-          {Device.designName}
-        </Text>
+        <View style={{ margin: 5, backgroundColor: "#B379FD" }}>
+          <Text>
+            O Design do aparelho é:
+            {Device.designName}
+          </Text>
+        </View>
 
-        <Text>
-          O Ano do lançamento é:
-          {Device.deviceYearClass}
-        </Text>
+        <View style={{ margin: 5, backgroundColor: "#B379FD" }}>
+          <Text>
+            O Ano do lançamento é:
+            {Device.deviceYearClass}
+          </Text>
+        </View>
 
-        <Text>
-          A memória do aparelho é:
-          {Device.totalMemory}
-        </Text>
+        <View style={{ margin: 5, backgroundColor: "#B379FD" }}>
+          <Text>
+            A memória do aparelho é:
+            {Device.totalMemory}
+          </Text>
+        </View>
 
-        <Text>
-          A versão do sistema é a:
-          {Device.osBuildId}
-        </Text>
+        <View style={{ margin: 5, backgroundColor: "#B379FD" }}>
+          <Text>
+            A versão do sistema é a:
+            {Device.osBuildId}
+          </Text>
+        </View>
 
-        <Text>
-          A arquitetura do aparelho é:
-          {Device.osInternalBuildId}
-        </Text>
-
-        <Footer/>
+        <View style={{ margin: 5, backgroundColor: "#B379FD" }}>
+          <Text>
+            A arquitetura do aparelho é:
+            {Device.osInternalBuildId}
+          </Text>
+        </View>
       </View>
     </View>
   );
 }
+
+export const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    height: "100%",
+    backgroundColor: "#EACBF8",
+  },
+});

@@ -1,75 +1,80 @@
 import { View, StyleSheet, Text, Button } from "react-native";
-import Footer from "../components/Footer";
 import Header from "../components/Header";
 import { useEffect, useState } from "react";
-import * as Battery from 'expo-battery';
+import * as Battery from "expo-battery";
 
-const styles = StyleSheet.create({
+export const styles = StyleSheet.create({
   container: {
-      flex: 1,
-      gap: 10
   },
-  content: {
-      flex: 1,
-      gap: 20,
-      padding: 20,
-      alignSelf: 'center',
-  },
-  contentTextStyle: {
-      padding: 5,
-      textAlignVertical: 'center',
-      minHeight: 50,
-      backgroundColor: '#969',
-      fontWeight: 'bold',
-      fontSize: 18,
-      textAlign: 'center'
-  },
-  content: {
+  greenBackground: {
     flex: 1,
-    gap: 20,
-    padding: 20,
-    alignSelf: 'center',
-    marginTop: 230,
-  }
+    backgroundColor: "green",
+  },
+  yellowBackground: {
+    flex: 1,
+    backgroundColor: "yellow",
+  },
+  orangeBackground: {
+    flex: 1,
+    backgroundColor: "orange",
+  },
+  redBackground: {
+    flex: 1,
+    backgroundColor: "red",
+  },
 });
 
-
-export default function BatteryInfo() {
-  const [ nivelBateria, setNivelBateria ] = useState()
-  const [ statusBateria, setStatusBateria ] = useState()
+export default function BatteryInfo({ navigation }) {
+  const [nivelBateria, setNivelBateria] = useState();
+  const [statusBateria, setStatusBateria] = useState();
 
   async function atualizarTudo() {
-    bateria()
+    bateria();
   }
 
   async function status() {
-    const status = await Battery.getBatteryStateAsync()
-    setStatusBateria(status)
+    const status = await Battery.getBatteryStateAsync();
+    setStatusBateria(status);
   }
 
   async function bateria() {
-    const nivel = await Battery.getBatteryLevelAsync()
-    setNivelBateria(nivel * 100)
+    const nivel = await Battery.getBatteryLevelAsync();
+    setNivelBateria(nivel * 100);
   }
 
   useEffect(() => {
-    bateria()
-    status()
+    bateria();
+    status();
   }, []);
+
+  let backgroundStyle = styles.container;
+
+  if (nivelBateria > 80) {
+    backgroundStyle = styles.greenBackground;
+  } else if (nivelBateria >= 50 && nivelBateria <= 80) {
+    backgroundStyle = styles.yellowBackground;
+  } else if (nivelBateria >= 30 && nivelBateria < 50) {
+    backgroundStyle = styles.orangeBackground;
+  } else if (nivelBateria >= 1 && nivelBateria < 30) {
+    backgroundStyle = styles.redBackground;
+  }
 
   return (
     <View style={styles.container}>
-        <Header title="Bateria"/>
-          <View style={styles.content}>
-            <Text style={{ textAlign: "center"}}> 
-              { nivelBateria }%
-            </Text>
-            <Text style={{ textAlign: "center"}}> 
-              { statusBateria }
-            </Text>
-            <Button title="Atualizar" onPress={atualizarTudo}/>
+      <Header title="Bateria" />
+      <View style={{ alignContent: "center",}}>
+        <Text style={{ textAlign: "center", marginTop: 50, marginBottom: 50, }}>
+          {nivelBateria}%
+        </Text>
+        <View style={{ alignItems: "center",}}>
+          <View style={{ width: "100%", height: 60,}}>
+            <View style={[backgroundStyle]} />
           </View>
-        <Footer />
+        </View>
+        <View style={{ position: "fixed", }}>
+        <Button style={{marginTop: 50,}} title="Atualizar" onPress={atualizarTudo} />
+        </View>
+      </View>
     </View>
   );
 }
