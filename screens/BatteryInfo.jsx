@@ -5,6 +5,8 @@ import * as Battery from "expo-battery";
 
 export const styles = StyleSheet.create({
   container: {
+    height: "100%",
+    width: "100%",
   },
   greenBackground: {
     flex: 1,
@@ -67,12 +69,12 @@ export default function BatteryInfo({ navigation }) {
           {nivelBateria}%
         </Text>
         <View style={{ alignItems: "center",}}>
-          <View style={{ width: "100%", height: 60,}}>
+          <View style={{ width: "100%", height: 60, marginLeft: 5, marginRight: 5}}>
             <View style={[backgroundStyle]} />
           </View>
         </View>
-        <View style={{ position: "fixed", }}>
-        <Button style={{marginTop: 50,}} title="Atualizar" onPress={atualizarTudo} />
+        <View style={{ marginTop: 120, marginLeft: 10, marginRight: 10}}>
+          <Button title="Atualizar" onPress={atualizarTudo} />
         </View>
       </View>
     </View>

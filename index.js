@@ -5,6 +5,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 import SplashScreen from "./screens/SplashScreen";
 import HomeScreen from "./screens/HomeScreen";
+import MyScreenOrientation from "./screens/MyScreenOrientation";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 const Stack = createNativeStackNavigator();
@@ -30,6 +31,17 @@ export default function RootNavigation() {
         <Stack.Screen
           name="DeviceInfo"
           component={DeviceInfo}
+          options={{
+            headerShown: true, 
+            headerStyle: {
+              backgroundColor: '#000',
+            },
+            headerTintColor: '#fff',
+          }}
+        />
+        <Stack.Screen
+          name="MyScreenOrientation"
+          component={MyScreenOrientation}
           options={{
             headerShown: true, 
             headerStyle: {
@@ -74,7 +86,7 @@ function TabsNavigation() {
         name="DeviceInfo"
         component={DeviceInfo}
         options={{
-            tabBarLabel: "Home",
+            tabBarLabel: "Device",
             tabBarIcon: ({ color }) => (
               <MaterialCommunityIcons name="cellphone-information" color={"#782DE3"} size={26} />
             ),
@@ -84,9 +96,19 @@ function TabsNavigation() {
         name="BatteryInfo"
         component={BatteryInfo}
         options={{
-            tabBarLabel: "Home",
+            tabBarLabel: "Battery",
             tabBarIcon: ({ color }) => (
               <MaterialCommunityIcons name="battery-charging-100" color={"#782DE3"} size={26} />
+            ),
+          }}
+      />
+      <tabs.Screen
+        name="MyScreenOrientation"
+        component={MyScreenOrientation}
+        options={{
+            tabBarLabel: "Orientatição Tela",
+            tabBarIcon: ({ color }) => (
+              <MaterialCommunityIcons name="screen-rotation" color={"#782DE3"} size={26} />
             ),
           }}
       />
