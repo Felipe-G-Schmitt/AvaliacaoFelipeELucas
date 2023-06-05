@@ -5,6 +5,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 import SplashScreen from "./screens/SplashScreen";
 import HomeScreen from "./screens/HomeScreen";
+import Notify from "./screens/Notify";
 import MyScreenOrientation from "./screens/MyScreenOrientation";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
@@ -72,6 +73,17 @@ export default function RootNavigation() {
             headerTintColor: '#fff',
           }}
         />
+        <Stack.Screen
+          name="Notify"
+          component={Notify}
+          options={{
+            headerShown: true,
+            headerStyle: {
+              backgroundColor: '#000',
+            },
+            headerTintColor: '#fff',
+          }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -109,6 +121,16 @@ function TabsNavigation() {
             tabBarLabel: "Orientatição Tela",
             tabBarIcon: ({ color }) => (
               <MaterialCommunityIcons name="screen-rotation" color={"#782DE3"} size={26} />
+            ),
+          }}
+      />
+      <tabs.Screen
+        name="Notify"
+        component={Notify}
+        options={{
+            tabBarLabel: "Notificação",
+            tabBarIcon: ({ color }) => (
+              <MaterialCommunityIcons name="bell" color={"#782DE3"} size={26} />
             ),
           }}
       />
