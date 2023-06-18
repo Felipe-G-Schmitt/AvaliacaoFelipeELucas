@@ -8,9 +8,9 @@ import { useEffect } from "react";
 
 export default function Notify({ navigation }) {
     const [expoToken, setExpoToken] = useState("");
-
     const [nivelBateria, setNivelBateria] = useState();
     const [statusBateria, setStatusBateria] = useState();
+    const [ultimaNotificacao, setUltimaNotificacao] = useState(Notifications.useLastNotificationResponse());
 
     async function atualizarTudo() {
         bateria();
@@ -55,6 +55,35 @@ export default function Notify({ navigation }) {
         setExpoToken(token);
     }
 
+    async function notifRetorno(){
+        const token = await Notifications.scheduleNotificationAsync({
+            content: {
+                title: "Página de dispositivo",
+                body: "Visite a página de dispositivo",
+            },
+            trigger : {seconds: 3}
+        })
+        setExpoToken(token);
+    };
+
+    useEffect(() => {
+        if (ultimaNotificacao?.notification?.request?.content?.body === "Visite a página de dispositivo") {
+          navigation.navigate("DeviceInfo")
+          setTimeout(() => {
+            setUltimaNotificacao(null)
+          }, 2000)
+          
+        }
+      }, [ultimaNotificacao])
+  
+      async function exibirAlerta(){
+        alert(ultimaNotificacao.notification.request.content.body)
+      };
+  
+      async function avaliarDispositivo(){
+        alert("Seu aparelho " + Device.modelName + " é excelente.")
+      };
+
   return (
     <View style={styles.container}>
       <Header title="Notificações" />
@@ -72,7 +101,26 @@ export default function Notify({ navigation }) {
             style={{ marginBottom: 15}}
             onPress={async () => notificarAparelho()}
         />
-        <Button title="ler notificações não lidas"/>
+        <Button 
+            title="Ver última notificação" 
+            style={{ marginBottom: 15}}
+            onPress={async () => exibirAlerta()}
+        />
+        <Button 
+            title="Ir à página de dispositivo" 
+            style={{ marginBottom: 15}}
+            onPress={() => {navigation.navigate("DeviceInfo")}}
+        />
+        <Button 
+            title="Avalie seu dispositivo" 
+            style={{ marginBottom: 15}}
+            onPress={async () => avaliarDispositivo()}
+        />
+        <Button 
+            title="Notificação de retorno" 
+            style={{ marginBottom: 15}}
+            onPress={async () => notifRetorno()}
+        />
       </View>
       </View>
     </View>
