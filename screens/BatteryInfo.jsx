@@ -69,7 +69,7 @@ export default function BatteryInfo({ navigation }) {
           {nivelBateria}%
         </Text>
         <View style={{ alignItems: "center",}}>
-          <View style={{ width: "100%", height: 60, marginLeft: 5, marginRight: 5}}>
+          <View style={{ width: "95%", height: 60,}}>
             <View style={[backgroundStyle]} />
           </View>
         </View>

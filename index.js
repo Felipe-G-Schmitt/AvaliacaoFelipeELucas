@@ -6,6 +6,7 @@ import { createMaterialBottomTabNavigator } from "@react-navigation/material-bot
 import SplashScreen from "./screens/SplashScreen";
 import HomeScreen from "./screens/HomeScreen";
 import Notify from "./screens/Notify";
+import ContactsInfo from "./screens/ContactsInfo";
 import MyScreenOrientation from "./screens/MyScreenOrientation";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
@@ -84,6 +85,17 @@ export default function RootNavigation() {
             headerTintColor: '#fff',
           }}
         />
+        <Stack.Screen
+          name="ContactsInfo"
+          component={ContactsInfo}
+          options={{
+            headerShown: true,
+            headerStyle: {
+              backgroundColor: '#000',
+            },
+            headerTintColor: '#fff',
+          }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -127,6 +139,16 @@ function TabsNavigation() {
       <tabs.Screen
         name="Notify"
         component={Notify}
+        options={{
+            tabBarLabel: "Notificação",
+            tabBarIcon: ({ color }) => (
+              <MaterialCommunityIcons name="bell" color={"#782DE3"} size={26} />
+            ),
+          }}
+      />
+      <tabs.Screen
+        name="ContactsInfo"
+        component={ContactsInfo}
         options={{
             tabBarLabel: "Notificação",
             tabBarIcon: ({ color }) => (

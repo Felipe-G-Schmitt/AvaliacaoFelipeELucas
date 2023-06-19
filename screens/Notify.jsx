@@ -1,4 +1,5 @@
 import { Button, StyleSheet, Text, View } from "react-native";
+import * as Notifications from "expo-notifications";
 import * as Notification from "expo-notifications";
 import * as Battery from "expo-battery";
 import * as Device from "expo-device";
@@ -100,11 +101,6 @@ export default function Notify({ navigation }) {
             title="Notificação aparelho"
             style={{ marginBottom: 15}}
             onPress={async () => notificarAparelho()}
-        />
-        <Button 
-            title="Ver última notificação" 
-            style={{ marginBottom: 15}}
-            onPress={async () => exibirAlerta()}
         />
         <Button 
             title="Ir à página de dispositivo" 
