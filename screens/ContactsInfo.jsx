@@ -1,23 +1,25 @@
-import { Button, StyleSheet, Text, View } from "react-native";
+import { Button, FlatList, StyleSheet, Text, View } from "react-native";
 import Header from "../components/Header";
-import { useEffect } from "react";
 import * as Contacts from "expo-contacts";
 import { useCallback } from "react";
 import { useState } from "react";
-import { FlatList } from "react-native-web";
-import { Item } from "react-native-paper/lib/typescript/src/components/Drawer/Drawer";
+import { useFocusEffect } from "@react-navigation/native";
+import Items from "../components/Items";
 
 export default function ContactsInfo({ navigation }) {
     const [contacts, setContacts] = useState([]);
 
     async function carregarContatos(){
         const { data } = await Contacts.getContactsAsync({
-            fields: [Contacts.Fields.Emails, Contacts.Fields.PhoneNumbers],
+            fields: [
+                Contacts.Fields.Emails, 
+                Contacts.Fields.PhoneNumbers
+            ]
         })
         setContacts(data)
-    }
+    };
 
-    useEffect((
+    useFocusEffect(
         useCallback(() => {
             ( async () => {
                 const { status } = await Contacts.requestPermissionsAsync();
@@ -25,12 +27,12 @@ export default function ContactsInfo({ navigation }) {
                     carregarContatos();
                 }
             })();
-        })
-    ), []);
+        }, [])
+    );
 
   return (
     <View style={styles.container}>
-      <Header title="Notificações" />
+      <Header title="Contatos" />
         <View style={styles.container}>
             {
                 contacts
@@ -38,11 +40,11 @@ export default function ContactsInfo({ navigation }) {
                         style={{ flex: 1, gap: 10 }}
                         data={contacts}
                         keyExtractor={(item) => item.id.toString()}
-                        renderItem={({ item }) => {
-                            <Item
+                        renderItem={({ item }) => (
+                            <Items
                                 item={item}
                             />
-                        }}
+                        )}
                         />
                         : <></>
             }

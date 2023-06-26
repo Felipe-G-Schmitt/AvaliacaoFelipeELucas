@@ -150,9 +150,9 @@ function TabsNavigation() {
         name="ContactsInfo"
         component={ContactsInfo}
         options={{
-            tabBarLabel: "Notificação",
+            tabBarLabel: "Contatos",
             tabBarIcon: ({ color }) => (
-              <MaterialCommunityIcons name="bell" color={"#782DE3"} size={26} />
+              <MaterialCommunityIcons name="contacts" color={"#782DE3"} size={26} />
             ),
           }}
       />
