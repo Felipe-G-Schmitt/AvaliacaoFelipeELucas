@@ -4,9 +4,10 @@ import * as Battery from 'expo-battery';
 
 const styles = StyleSheet.create({
   header: {
-    paddingTop: 30,
-    paddingBottom: 5,
-    paddingHorizontal: 5,
+    paddingTop: 0,
+    paddingBottom: 0,
+    paddingHorizontal: 0,
+    maxHeight: "16%",
   },
   headerTextStyle: {
     marginTop: 10,
