@@ -8,6 +8,8 @@ import Items from "../components/Items";
 
 export default function ContactsInfo({ navigation }) {
   const [expoToken, setExpoToken] = useState("");
+  const [NomeContato, setNomeContato] = useState("");
+  const [TelefoneContato, setTelefoneContato] = useState("");
   const [contacts, setContacts] = useState([]);
   const [filteredContacts, setFilteredContacts] = useState([]);
   const [searchText, setSearchText] = useState("");
@@ -48,6 +50,18 @@ export default function ContactsInfo({ navigation }) {
     setFilteredContacts(filtered);
   };
 
+  async function notificarContato(){
+    const token = await Notification.scheduleNotificationAsync({
+        content: {
+            title: NomeContato,
+            subtitle: TelefoneContato,
+            body: NomeContato,
+        },
+        trigger: { seconds: 3 },
+    })
+    setExpoToken(token);
+}
+
   return (
     <View style={styles.container}>
       <Header title="Contatos" />
@@ -65,6 +79,7 @@ export default function ContactsInfo({ navigation }) {
         {filteredContacts.length > 0 ? (
           <FlatList
             style={{ flex: 1, gap: 10 }}
+            onPress={() => notificarContato()}
             data={filteredContacts}
             keyExtractor={(item) => item.id.toString()}
             renderItem={({ item }) => <Items item={item} />}

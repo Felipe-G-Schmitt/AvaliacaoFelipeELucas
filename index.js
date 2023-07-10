@@ -9,6 +9,8 @@ import Notify from "./screens/Notify";
 import ContactsInfo from "./screens/ContactsInfo";
 import MyScreenOrientation from "./screens/MyScreenOrientation";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import UserNotify from "./screens/UserNotify";
+import CriativPage from "./screens/CriativPage";
 
 const Stack = createNativeStackNavigator();
 
@@ -96,6 +98,28 @@ export default function RootNavigation() {
             headerTintColor: '#fff',
           }}
         />
+        <Stack.Screen
+          name="UserNotify"
+          component={UserNotify}
+          options={{
+            headerShown: true,
+            headerStyle: {
+              backgroundColor: '#000',
+            },
+            headerTintColor: '#fff',
+          }}
+        />
+        <Stack.Screen
+          name="CriativPage"
+          component={CriativPage}
+          options={{
+            headerShown: true,
+            headerStyle: {
+              backgroundColor: '#000',
+            },
+            headerTintColor: '#fff',
+          }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -153,6 +177,26 @@ function TabsNavigation() {
             tabBarLabel: "Contatos",
             tabBarIcon: ({ color }) => (
               <MaterialCommunityIcons name="contacts" color={"#782DE3"} size={26} />
+            ),
+          }}
+      />
+      <tabs.Screen
+        name="UserNotify"
+        component={UserNotify}
+        options={{
+            tabBarLabel: "Usuário",
+            tabBarIcon: ({ color }) => (
+              <MaterialCommunityIcons name="account" color={"#782DE3"} size={26} />
+            ),
+          }}
+      />
+      <tabs.Screen
+        name="CriativPage"
+        component={CriativPage}
+        options={{
+            tabBarLabel: "Criativ Page",
+            tabBarIcon: ({ color }) => (
+              <MaterialCommunityIcons name="account-cowboy-hat" color={"#782DE3"} size={26} />
             ),
           }}
       />
