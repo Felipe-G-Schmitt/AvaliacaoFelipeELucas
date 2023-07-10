@@ -1,46 +1,55 @@
 import{ StyleSheet, Text, View, Button} from 'react-native';
 import Header from '../components/Header';
 import * as ScreenOrientation from 'expo-screen-orientation';
+import { useState } from 'react';
+
+export default function MyScreenOrientation({ navigation }) {
+const [BackgroundColor, setBackgroundColor] = useState("");
 
 async function padrao() {
     await ScreenOrientation.lockAsync(
-        ScreenOrientation.OrientationLock.DEFAULT
+        ScreenOrientation.OrientationLock.DEFAULT,
+        setBackgroundColor("red")
         );
 }
 
 async function direita() {
     await ScreenOrientation.lockAsync(
-        ScreenOrientation.OrientationLock.LANDSCAPE_RIGHT
+        ScreenOrientation.OrientationLock.LANDSCAPE_RIGHT,
+        setBackgroundColor("green")
         );
 }
 
 async function esquerda() {
     await ScreenOrientation.lockAsync(
-        ScreenOrientation.OrientationLock.LANDSCAPE_LEFT
+        ScreenOrientation.OrientationLock.LANDSCAPE_LEFT,
+        setBackgroundColor("green")
         );
 }
 
 async function padraoForcado() {
     await ScreenOrientation.lockAsync(
-        ScreenOrientation.OrientationLock.DEFAULT
+        ScreenOrientation.OrientationLock.DEFAULT,
+        setBackgroundColor("red")
         );
 }
 
 async function inverterForcado() {
     await ScreenOrientation.lockAsync(
-        ScreenOrientation.OrientationLock.PORTRAIT_DOWN
+        ScreenOrientation.OrientationLock.PORTRAIT_DOWN,
+        setBackgroundColor("white")
         );
 }
 
 async function padraoForcado2() {
     await ScreenOrientation.lockAsync(
-        ScreenOrientation.OrientationLock.DEFAULT
+        ScreenOrientation.OrientationLock.DEFAULT,
+        setBackgroundColor("red")
         );
 }
 
-export default function MyScreenOrientation({ navigation }) {
 return (
-<View style={{ height: "100%",}}>
+<View style={{ height: "100%", backgroundColor: BackgroundColor,}}>
     <Header title="Orientação da tela"/>
     <View  style={{justifyContent:"center", alignContent: "center", }}>
     <View style={{ marginBottom: 30}}/>
@@ -77,5 +86,7 @@ container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    height: "100%",
+    backgroundColor: "#FFFFFF",
 },
 });

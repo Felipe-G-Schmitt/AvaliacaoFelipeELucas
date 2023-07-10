@@ -1,62 +1,109 @@
-import { Button, FlatList, StyleSheet, Text, View } from "react-native";
+import React, { useState, useEffect } from "react";
+import { Button, FlatList, StyleSheet, Text, TextInput, View } from "react-native";
 import Header from "../components/Header";
 import * as Contacts from "expo-contacts";
 import { useCallback } from "react";
-import { useState } from "react";
 import { useFocusEffect } from "@react-navigation/native";
 import Items from "../components/Items";
 
 export default function ContactsInfo({ navigation }) {
-    const [contacts, setContacts] = useState([]);
+  const [expoToken, setExpoToken] = useState("");
+  const [contacts, setContacts] = useState([]);
+  const [filteredContacts, setFilteredContacts] = useState([]);
+  const [searchText, setSearchText] = useState("");
 
-    async function carregarContatos(){
-        const { data } = await Contacts.getContactsAsync({
-            fields: [
-                Contacts.Fields.Emails, 
-                Contacts.Fields.PhoneNumbers
-            ]
-        })
-        setContacts(data)
-    };
+  useEffect(() => {
+    filterContacts();
+  }, [searchText, contacts]);
 
-    useFocusEffect(
-        useCallback(() => {
-            ( async () => {
-                const { status } = await Contacts.requestPermissionsAsync();
-                if (status === 'granted') {
-                    carregarContatos();
-                }
-            })();
-        }, [])
-    );
+  async function loadContacts() {
+    const { data } = await Contacts.getContactsAsync({
+      fields: [Contacts.Fields.Emails, Contacts.Fields.PhoneNumbers],
+    });
+    setContacts(data);
+  }
+
+  useFocusEffect(
+    useCallback(() => {
+      (async () => {
+        const { status } = await Contacts.requestPermissionsAsync();
+        if (status === "granted") {
+          loadContacts();
+        }
+      })();
+    }, [])
+  );
+
+  const filterContacts = () => {
+    if (!searchText) {
+      setFilteredContacts(contacts);
+      return;
+    }
+
+    const filtered = contacts.filter((contact) => {
+      const name = contact.name ? contact.name.toLowerCase() : "";
+      return name.includes(searchText.toLowerCase());
+    });
+
+    setFilteredContacts(filtered);
+  };
 
   return (
     <View style={styles.container}>
       <Header title="Contatos" />
-        <View style={styles.container}>
-            {
-                contacts
-                    ? <FlatList
-                        style={{ flex: 1, gap: 10 }}
-                        data={contacts}
-                        keyExtractor={(item) => item.id.toString()}
-                        renderItem={({ item }) => (
-                            <Items
-                                item={item}
-                            />
-                        )}
-                        />
-                        : <></>
-            }
-        </View>
+      <View style={styles.searchContainer}>
+        <TextInput
+          style={styles.searchInput}
+          placeholder="Pesquisar por nome"
+          value={searchText}
+          onChangeText={setSearchText}
+          placeholderTextColor={"black"}
+        />
+        <Button title="Limpar" onPress={() => setSearchText("")} />
+      </View>
+      <View style={styles.contactsContainer}>
+        {filteredContacts.length > 0 ? (
+          <FlatList
+            style={{ flex: 1, gap: 10 }}
+            data={filteredContacts}
+            keyExtractor={(item) => item.id.toString()}
+            renderItem={({ item }) => <Items item={item} />}
+          />
+        ) : (
+          <Text>Nenhum contato encontrado.</Text>
+        )}
+      </View>
+      <Text  style={{ textAlign: "center", marginTop: 10}}>Expo Token: { expoToken }</Text>
     </View>
   );
 }
 
-export const styles = StyleSheet.create({
+const styles = StyleSheet.create({
   container: {
     flex: 1,
     height: "100%",
-    backgroundColor: "#EACBF8",
+    backgroundColor: "#FFFFFF",
+  },
+  searchContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    paddingHorizontal: 15,
+    paddingVertical: 5,
+    marginTop: 15,
+  },
+  searchInput: {
+    flex: 1,
+    height: 40,
+    borderWidth: 1,
+    borderColor: "#000",
+    borderRadius: 5,
+    marginRight: 10,
+    paddingHorizontal: 10,
+    backgroundColor: "#CCCCCC",
+    color: "black",
+  },
+  contactsContainer: {
+    flex: 1,
+    padding: 10,
   },
 });

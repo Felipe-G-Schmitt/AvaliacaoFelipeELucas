@@ -36,7 +36,7 @@ export default function Notify({ navigation }) {
         const token = await Notification.scheduleNotificationAsync({
             content: {
                 title: "Nivel da bateria",
-                subtitle: "fazueli",
+                subtitle: "bateria",
                 body: nivelBateria+"%",
             },
             trigger: { seconds: 3 },
@@ -48,7 +48,7 @@ export default function Notify({ navigation }) {
         const token = await Notification.scheduleNotificationAsync({
             content: {
                 title: "Aparelho",
-                subtitle: "fazueli",
+                subtitle: "Dispositivo",
                 body: "O seu aparelho "+Device.modelName+" é incrivel",
             },
             trigger: { seconds: 3 },
@@ -127,6 +127,6 @@ export const styles = StyleSheet.create({
   container: {
     flex: 1,
     height: "100%",
-    backgroundColor: "#EACBF8",
+    backgroundColor: "#FFFFFF",
   },
 });
