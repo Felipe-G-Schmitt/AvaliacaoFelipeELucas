@@ -11,6 +11,7 @@ import MyScreenOrientation from "./screens/MyScreenOrientation";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import UserNotify from "./screens/UserNotify";
 import CriativPage from "./screens/CriativPage";
+import Sensors from "./screens/Sensors";
 
 const Stack = createNativeStackNavigator();
 
@@ -120,6 +121,17 @@ export default function RootNavigation() {
             headerTintColor: '#fff',
           }}
         />
+        <Stack.Screen
+          name="Sensors"
+          component={Sensors}
+          options={{
+            headerShown: true,
+            headerStyle: {
+              backgroundColor: '#000',
+            },
+            headerTintColor: '#fff',
+          }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -197,6 +209,16 @@ function TabsNavigation() {
             tabBarLabel: "Criativ Page",
             tabBarIcon: ({ color }) => (
               <MaterialCommunityIcons name="account-cowboy-hat" color={"#782DE3"} size={26} />
+            ),
+          }}
+      />
+      <tabs.Screen
+        name="Sensors"
+        component={Sensors}
+        options={{
+            tabBarLabel: "Sensors",
+            tabBarIcon: ({ color }) => (
+              <MaterialCommunityIcons name="leak" color={"#782DE3"} size={26} />
             ),
           }}
       />
