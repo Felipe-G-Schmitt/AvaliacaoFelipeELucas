@@ -1,19 +1,17 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { Button } from "react-native-paper";
-import { useNavigation } from "@react-navigation/native";
-import DeviceInfo from "./DeviceInfo";
-import BatteryInfo from "./BatteryInfo";
 
 export default function App({ navigation }) {
   return (
     <View style={styles.container}>
       <View>
-        <Text>Seja bem vindo!</Text>
+        <Text style={{ textAlign: "center", fontSize: 20, marginBottom: 5}}>Seja bem vindo!</Text>
         <Button
           mode="contained"
           style={{
             color: "#fff",
+            marginBottom: 5,
           }}
           onPress={() => {
             navigation.navigate("DeviceInfo");
@@ -25,12 +23,85 @@ export default function App({ navigation }) {
           mode="contained"
           style={{
             color: "#fff",
+            marginBottom: 5,
           }}
           onPress={() => {
             navigation.navigate("BatteryInfo");
           }}
         >
           Battery
+        </Button>
+        <Button
+          mode="contained"
+          style={{
+            color: "#fff",
+            marginBottom: 5,
+          }}
+          onPress={() => {
+            navigation.navigate("MyScreenOrientation");
+          }}
+        >
+          Orientação de tela
+        </Button>
+        <Button
+          mode="contained"
+          style={{
+            color: "#fff",
+            marginBottom: 5,
+          }}
+          onPress={() => {
+            navigation.navigate("Notify");
+          }}
+        >
+          Notificação
+        </Button>
+        <Button
+          mode="contained"
+          style={{
+            color: "#fff",
+            marginBottom: 5,
+          }}
+          onPress={() => {
+            navigation.navigate("ContactsInfo");
+          }}
+        >
+          Contatos
+        </Button>
+        <Button
+          mode="contained"
+          style={{
+            color: "#fff",
+            marginBottom: 5,
+          }}
+          onPress={() => {
+            navigation.navigate("UserNotify");
+          }}
+        >
+          Usuário
+        </Button>
+        <Button
+          mode="contained"
+          style={{
+            color: "#fff",
+            marginBottom: 5,
+          }}
+          onPress={() => {
+            navigation.navigate("CriativPage");
+          }}
+        >
+          Criative Page
+        </Button>
+        <Button
+          mode="contained"
+          style={{
+            color: "#fff",
+            marginBottom: 5,
+          }}
+          onPress={() => {
+            navigation.navigate("Sensors");
+          }}
+        >
+          Sensors
         </Button>
       </View>
     </View>
