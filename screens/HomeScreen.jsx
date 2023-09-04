@@ -11,6 +11,7 @@ import Notify from "./Notify";
 import ScreenCapture from "./ScreenCapture";
 import Sensors from "./Sensors";
 import UserNotify from "./UserNotify";
+import LocalAuthentificator from "./LocalAuthentificator";
 
 export default function App({ navigation }) {
   return (
@@ -124,6 +125,18 @@ export default function App({ navigation }) {
           }}
         >
           ScreenCapture
+        </Button>
+        <Button
+          mode="contained"
+          style={{
+            color: "#fff",
+            marginBottom: 5,
+          }}
+          onPress={() => {
+            navigation.navigate("LocalAuthentificator");
+          }}
+        >
+          LocalAuthentificator
         </Button>
       </View>
     </View>
