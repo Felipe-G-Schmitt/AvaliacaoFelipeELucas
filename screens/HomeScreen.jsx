@@ -113,6 +113,18 @@ export default function App({ navigation }) {
         >
           Sensors
         </Button>
+        <Button
+          mode="contained"
+          style={{
+            color: "#fff",
+            marginBottom: 5,
+          }}
+          onPress={() => {
+            navigation.navigate("ScreenCapture");
+          }}
+        >
+          ScreenCapture
+        </Button>
       </View>
     </View>
   );
