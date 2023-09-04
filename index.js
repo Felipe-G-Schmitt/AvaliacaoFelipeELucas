@@ -133,6 +133,17 @@ export default function RootNavigation() {
             headerTintColor: '#fff',
           }}
         />
+        <Stack.Screen
+          name="Sensors"
+          component={Sensors}
+          options={{
+            headerShown: true,
+            headerStyle: {
+              backgroundColor: '#000',
+            },
+            headerTintColor: '#fff',
+          }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -16,12 +16,12 @@ export default function App({ navigation }) {
   return (
     <View style={styles.container}>
       <View>
-        <Text style={{ textAlign: "center"}}>Seja bem vindo!</Text>
+        <Text style={{ textAlign: "center", fontSize: 20, marginBottom: 5}}>Seja bem vindo!</Text>
         <Button
           mode="contained"
           style={{
             color: "#fff",
-            marginBottom: 10,
+            marginBottom: 5,
           }}
           onPress={() => {
             navigation.navigate("DeviceInfo");
@@ -33,7 +33,7 @@ export default function App({ navigation }) {
           mode="contained"
           style={{
             color: "#fff",
-            marginBottom: 10,
+            marginBottom: 5,
           }}
           onPress={() => {
             navigation.navigate("BatteryInfo");
@@ -45,85 +45,73 @@ export default function App({ navigation }) {
           mode="contained"
           style={{
             color: "#fff",
-            marginBottom: 10,
-          }}
-          onPress={() => {
-            navigation.navigate("ContactsInfo");
-          }}
-        >
-          Contacts
-        </Button>
-        <Button
-          mode="contained"
-          style={{
-            color: "#fff",
-            marginBottom: 10,
-          }}
-          onPress={() => {
-            navigation.navigate("CriativPage");
-          }}
-        >
-          CriativPage
-        </Button>
-        <Button
-          mode="contained"
-          style={{
-            color: "#fff",
-            marginBottom: 10,
+            marginBottom: 5,
           }}
           onPress={() => {
             navigation.navigate("MyScreenOrientation");
           }}
         >
-          MyScreenOrientation
+          Orientação de tela
         </Button>
         <Button
           mode="contained"
           style={{
             color: "#fff",
-            marginBottom: 10,
+            marginBottom: 5,
           }}
           onPress={() => {
             navigation.navigate("Notify");
           }}
         >
-          Notify
+          Notificação
         </Button>
         <Button
           mode="contained"
           style={{
             color: "#fff",
-            marginBottom: 10,
+            marginBottom: 5,
           }}
           onPress={() => {
-            navigation.navigate("ScreenCapture");
+            navigation.navigate("ContactsInfo");
           }}
         >
-          ScreenCapture
+          Contatos
         </Button>
         <Button
           mode="contained"
           style={{
             color: "#fff",
-            marginBottom: 10,
+            marginBottom: 5,
+          }}
+          onPress={() => {
+            navigation.navigate("UserNotify");
+          }}
+        >
+          Usuário
+        </Button>
+        <Button
+          mode="contained"
+          style={{
+            color: "#fff",
+            marginBottom: 5,
+          }}
+          onPress={() => {
+            navigation.navigate("CriativPage");
+          }}
+        >
+          Criative Page
+        </Button>
+        <Button
+          mode="contained"
+          style={{
+            color: "#fff",
+            marginBottom: 5,
           }}
           onPress={() => {
             navigation.navigate("Sensors");
           }}
         >
           Sensors
-        </Button>
-        <Button
-          mode="contained"
-          style={{
-            color: "#fff",
-            marginBottom: 10,
-          }}
-          onPress={() => {
-            navigation.navigate("UserNotify");
-          }}
-        >
-          UserNotify
         </Button>
       </View>
     </View>
