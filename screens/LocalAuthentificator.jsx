@@ -1,5 +1,4 @@
-import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import * as Device from "expo-device";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import Header from "../components/Header";
 import * as LocalAuthentication from "expo-local-authentication";
 
@@ -12,8 +11,8 @@ export default function LocalAuthentificator({ navigation }) {
                 alert("Autenticação não disponível")
                 return
             }
-            const { sucess, error } = await LocalAuthentication.authenticateAsync();
-                if(sucess){
+            const { success, error } = await LocalAuthentication.authenticateAsync();
+                if(success){
                     alert("Autenticado com sucesso!")
                 }
                 else{
