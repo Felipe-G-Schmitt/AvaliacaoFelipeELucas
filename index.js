@@ -12,6 +12,7 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import UserNotify from "./screens/UserNotify";
 import CriativPage from "./screens/CriativPage";
 import Sensors from "./screens/Sensors";
+import ScreenCapture from "./screens/ScreenCapture";
 
 const Stack = createNativeStackNavigator();
 
@@ -36,6 +37,17 @@ export default function RootNavigation() {
         <Stack.Screen
           name="DeviceInfo"
           component={DeviceInfo}
+          options={{
+            headerShown: true, 
+            headerStyle: {
+              backgroundColor: '#000',
+            },
+            headerTintColor: '#fff',
+          }}
+        />
+        <Stack.Screen
+          name="ContactsInfo"
+          component={ContactsInfo}
           options={{
             headerShown: true, 
             headerStyle: {
@@ -81,7 +93,7 @@ export default function RootNavigation() {
           name="Notify"
           component={Notify}
           options={{
-            headerShown: true,
+            headerShown: true, 
             headerStyle: {
               backgroundColor: '#000',
             },
@@ -89,32 +101,10 @@ export default function RootNavigation() {
           }}
         />
         <Stack.Screen
-          name="ContactsInfo"
-          component={ContactsInfo}
+          name="ScreenCapture"
+          component={ScreenCapture}
           options={{
-            headerShown: true,
-            headerStyle: {
-              backgroundColor: '#000',
-            },
-            headerTintColor: '#fff',
-          }}
-        />
-        <Stack.Screen
-          name="UserNotify"
-          component={UserNotify}
-          options={{
-            headerShown: true,
-            headerStyle: {
-              backgroundColor: '#000',
-            },
-            headerTintColor: '#fff',
-          }}
-        />
-        <Stack.Screen
-          name="CriativPage"
-          component={CriativPage}
-          options={{
-            headerShown: true,
+            headerShown: true, 
             headerStyle: {
               backgroundColor: '#000',
             },
@@ -125,7 +115,18 @@ export default function RootNavigation() {
           name="Sensors"
           component={Sensors}
           options={{
-            headerShown: true,
+            headerShown: true, 
+            headerStyle: {
+              backgroundColor: '#000',
+            },
+            headerTintColor: '#fff',
+          }}
+        />
+        <Stack.Screen
+          name="UserNotify"
+          component={UserNotify}
+          options={{
+            headerShown: true, 
             headerStyle: {
               backgroundColor: '#000',
             },
@@ -143,82 +144,12 @@ function TabsNavigation() {
   return (
     <tabs.Navigator>
       <tabs.Screen
-        name="DeviceInfo"
-        component={DeviceInfo}
+        name="HomeScreen"
+        component={HomeScreen}
         options={{
-            tabBarLabel: "Device",
+            tabBarLabel: "Home",
             tabBarIcon: ({ color }) => (
-              <MaterialCommunityIcons name="cellphone-information" color={"#782DE3"} size={26} />
-            ),
-          }}
-      />
-      <tabs.Screen
-        name="BatteryInfo"
-        component={BatteryInfo}
-        options={{
-            tabBarLabel: "Battery",
-            tabBarIcon: ({ color }) => (
-              <MaterialCommunityIcons name="battery-charging-100" color={"#782DE3"} size={26} />
-            ),
-          }}
-      />
-      <tabs.Screen
-        name="MyScreenOrientation"
-        component={MyScreenOrientation}
-        options={{
-            tabBarLabel: "Orientatição Tela",
-            tabBarIcon: ({ color }) => (
-              <MaterialCommunityIcons name="screen-rotation" color={"#782DE3"} size={26} />
-            ),
-          }}
-      />
-      <tabs.Screen
-        name="Notify"
-        component={Notify}
-        options={{
-            tabBarLabel: "Notificação",
-            tabBarIcon: ({ color }) => (
-              <MaterialCommunityIcons name="bell" color={"#782DE3"} size={26} />
-            ),
-          }}
-      />
-      <tabs.Screen
-        name="ContactsInfo"
-        component={ContactsInfo}
-        options={{
-            tabBarLabel: "Contatos",
-            tabBarIcon: ({ color }) => (
-              <MaterialCommunityIcons name="contacts" color={"#782DE3"} size={26} />
-            ),
-          }}
-      />
-      <tabs.Screen
-        name="UserNotify"
-        component={UserNotify}
-        options={{
-            tabBarLabel: "Usuário",
-            tabBarIcon: ({ color }) => (
-              <MaterialCommunityIcons name="account" color={"#782DE3"} size={26} />
-            ),
-          }}
-      />
-      <tabs.Screen
-        name="CriativPage"
-        component={CriativPage}
-        options={{
-            tabBarLabel: "Criativ Page",
-            tabBarIcon: ({ color }) => (
-              <MaterialCommunityIcons name="account-cowboy-hat" color={"#782DE3"} size={26} />
-            ),
-          }}
-      />
-      <tabs.Screen
-        name="Sensors"
-        component={Sensors}
-        options={{
-            tabBarLabel: "Sensors",
-            tabBarIcon: ({ color }) => (
-              <MaterialCommunityIcons name="leak" color={"#782DE3"} size={26} />
+              <MaterialCommunityIcons name="home" color={"#782DE3"} size={26} />
             ),
           }}
       />

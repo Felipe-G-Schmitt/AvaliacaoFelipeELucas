@@ -33,7 +33,9 @@
     "react-native-screens": "~3.20.0",
     "react-native-vector-icons": "^9.2.0",
     "react-native-web": "~0.18.10",
-    "expo-sensors": "~12.1.1"
+    "expo-sensors": "~12.1.1",
+    "expo-screen-capture": "~5.1.1",
+    "expo-media-library": "~15.2.3"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0"
