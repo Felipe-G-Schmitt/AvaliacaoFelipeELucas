@@ -1,56 +1,67 @@
 import React, { useState } from "react";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
 import Header from "../components/Header";
 import * as LocalAuthentication from "expo-local-authentication";
 
 export default function LocalAuthenticator({ navigation }) {
-  const [authMethod, setAuthMethod] = useState(null);
+  const [authType, setAuthType] = useState("Biometria");
+  const [isButtonDisabled, setIsButtonDisabled] = useState(false);
+  const [customMessage, setCustomMessage] = useState("");
 
   const autenticar = async () => {
     try {
-      const disponivel = await LocalAuthentication.hasHardwareAsync();
-      console.log(disponivel);
-      if (!disponivel) {
-        alert("Autenticação não disponível");
-        return;
-      }
-
-      const authType = authMethod === "face" ? LocalAuthentication.AuthenticationType.FACIAL_RECOGNITION : LocalAuthentication.AuthenticationType.FINGERPRINT;
-
-      const { success, error } = await LocalAuthentication.authenticateAsync({
-        authenticationType: authType,
+      const result = await LocalAuthentication.authenticateAsync({
+        promptMessage: customMessage,
       });
-
-      if (success) {
+  
+      if (result.success) {
         alert("Autenticado com sucesso!");
       } else {
-        console.log(error);
-        alert("Autenticação falhou!");
+        alert("Autenticação falhou.");
       }
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
+  };
+  
+
+  const selectBiometria = () => {
+    setAuthType("Biometria");
+  };
+
+  const selectRosto = () => {
+    setAuthType("Rosto");
   };
 
   return (
     <View style={styles.container}>
       <Header title="Autenticação Local" />
+      <TextInput
+          value={customMessage}
+          style={{ 
+            width: "95%",
+            marginTop: 10,
+            marginLeft: 10,
+            padding: 10,
+            borderWidth: 1,
+            borderRadius: 10,}}
+          placeholder={"Escreve ai"}
+          onChangeText={(text) => setCustomMessage(text)}
+        />
       <View style={styles.optionContainer}>
         <TouchableOpacity
           style={[
             styles.authOption,
-            authMethod === "face" ? styles.selectedOption : null,
           ]}
-          onPress={() => setAuthMethod("face")}
+          onPress={selectRosto}
         >
           <Text style={{ color: "white" }}> Reconhecimento Facial </Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={[
             styles.authOption,
-            authMethod === "fingerprint" ? styles.selectedOption : null,
           ]}
-          onPress={() => setAuthMethod("fingerprint")}
+          onPress={selectBiometria}
         >
           <Text style={{ color: "white" }}> Impressão Digital </Text>
         </TouchableOpacity>
@@ -59,7 +70,7 @@ export default function LocalAuthenticator({ navigation }) {
         style={{
           backgroundColor: "#6750a4",
           borderWidth: 2,
-          marginTop: 20,
+          marginTop: 10,
           marginLeft: 10,
           marginRight: 10,
           padding: 10,
@@ -83,7 +94,7 @@ export const styles = StyleSheet.create({
   optionContainer: {
     flexDirection: "row",
     justifyContent: "space-around",
-    marginTop: 20,
+    marginTop: 10,
   },
   authOption: {
     backgroundColor: "#6750a4",
@@ -94,6 +105,6 @@ export const styles = StyleSheet.create({
     width: "45%",
   },
   selectedOption: {
-    backgroundColor: "#4CAF50", // Cor diferente para indicar seleção
+    backgroundColor: "#4CAF50",
   },
 });
