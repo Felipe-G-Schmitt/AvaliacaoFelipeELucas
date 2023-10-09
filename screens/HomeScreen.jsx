@@ -12,6 +12,7 @@ import ScreenCapture from "./ScreenCapture";
 import Sensors from "./Sensors";
 import UserNotify from "./UserNotify";
 import LocalAuthentificator from "./LocalAuthentificator";
+import Localization from "./Localization";
 
 export default function App({ navigation }) {
   return (
@@ -137,6 +138,18 @@ export default function App({ navigation }) {
           }}
         >
           LocalAuthentificator
+        </Button>
+        <Button
+          mode="contained"
+          style={{
+            color: "#fff",
+            marginBottom: 5,
+          }}
+          onPress={() => {
+            navigation.navigate("Localization");
+          }}
+        >
+          Localization
         </Button>
       </View>
     </View>

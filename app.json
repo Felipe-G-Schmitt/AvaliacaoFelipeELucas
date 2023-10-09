@@ -15,9 +15,13 @@
       "**/*"
     ],
     "ios": {
+      "infoPlist": {
+        "NSLocationWhenInUseUsageDescription": "Precisamos de sua permissão para acessar sua localização"
+      },
       "supportsTablet": true
     },
     "android": {
+      "permissions": ["ACCESS_FINE_LOCATION", "ACCESS_COARSE_LOCATION"],
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"

@@ -34,7 +34,6 @@ export default function ScreenCap( navigation ) {
         
     })
 
-
     const desativar = async () => {
         await ScreenCapture.preventScreenCaptureAsync()
     }

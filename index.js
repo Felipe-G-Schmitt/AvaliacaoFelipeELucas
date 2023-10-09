@@ -14,6 +14,8 @@ import CriativPage from "./screens/CriativPage";
 import Sensors from "./screens/Sensors";
 import ScreenCapture from "./screens/ScreenCapture";
 import LocalAuthentificator from "./screens/LocalAuthentificator";
+import location from "./screens/Localization";
+import Localization from "./screens/Localization";
 
 const Stack = createNativeStackNavigator();
 
@@ -137,6 +139,17 @@ export default function RootNavigation() {
         <Stack.Screen
           name="LocalAuthentificator"
           component={LocalAuthentificator}
+          options={{
+            headerShown: true,
+            headerStyle: {
+              backgroundColor: '#000',
+            },
+            headerTintColor: '#fff',
+          }}
+        />
+        <Stack.Screen
+          name="Localization"
+          component={Localization}
           options={{
             headerShown: true,
             headerStyle: {

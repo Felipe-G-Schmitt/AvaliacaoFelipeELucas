@@ -7,8 +7,15 @@ export default function LocalAuthenticator({ navigation }) {
   const [authType, setAuthType] = useState("Biometria");
   const [isButtonDisabled, setIsButtonDisabled] = useState(false);
   const [customMessage, setCustomMessage] = useState("");
+  const [numTentativas, setNumTentativas] = useState(0);
+
 
   const autenticar = async () => {
+    if (numTentativas >= 3) {
+      alert("Você excedeu o número máximo de tentativas. Por favor, tente novamente mais tarde.");
+      return;
+    }
+
     try {
       const result = await LocalAuthentication.authenticateAsync({
         promptMessage: customMessage,
@@ -17,7 +24,8 @@ export default function LocalAuthenticator({ navigation }) {
       if (result.success) {
         alert("Autenticado com sucesso!");
       } else {
-        alert("Autenticação falhou.");
+        alert("Não clique fora da área de biometria.");
+        setNumTentativas(numTentativas + 1);
       }
     } catch (error) {
       console.error(error);
