@@ -30,7 +30,7 @@ export default function Localization ({ navigation }) {
                     <Text>Latitude: {location.latitude}</Text>
                     <Text>Longitude: {location.longitude}</Text>
                     <View style={{ flex: 1, width: 300 }}>
-                        <MapView
+                        {/*<MapView
                             style={{ flex: 1 }}
                             initialRegion={{
                                 latitude: location.latitude,
@@ -44,7 +44,7 @@ export default function Localization ({ navigation }) {
                                 title="Localização do dispositivo"
                                 description="Esta é a atual localização do dispositivo."
                             />
-                        </MapView>
+                        </MapView>*/}
                     </View>
                 </View>
             ) : (
