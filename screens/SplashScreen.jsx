@@ -8,7 +8,7 @@ export default function SplashScreen({ navigation }) {
 
   return (
     <View style={styles.container}>
-      <ActivityIndicator size="large" color="#ff4655" />
+      <ActivityIndicator size="large" color="#6750a4" />
       <Text>Aguarde um instante...</Text>
     </View>
   );
