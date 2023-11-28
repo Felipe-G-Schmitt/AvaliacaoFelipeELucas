@@ -5,6 +5,7 @@ import * as Location from 'expo-location';
 import { Magnetometer } from 'expo-sensors';
 import { Feather } from '@expo/vector-icons';
 import Header from '../components/Header';
+import { ActivityIndicator } from 'react-native-paper';
 
 export default function Localization({ navigation }) {
   const [location, setLocation] = useState(null);
@@ -102,7 +103,10 @@ export default function Localization({ navigation }) {
 
         </View>
       ) : (
-        <Text>Carregando...</Text>
+      <View style={styles.container2}>
+        <ActivityIndicator size="large" color="#6750a4" />
+        <Text>Aguarde um instante...</Text>
+      </View>
       )}
     </ScrollView>
   );
@@ -112,4 +116,12 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: '#FFFFFF',
   },
+  container2: {
+    flex: 1,
+    backgroundColor: "#FFFFFF",
+    alignItems: "center",
+    justifyContent: "center",
+    textAlign: "center",
+    marginTop: 200,
+  }
 });
